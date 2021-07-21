@@ -40,8 +40,17 @@ class Car {
     }
 
     canTravel(travelDistanceKm) {
-
+        const distance = Math.round((this.data.tank.currentSize / this.data.fuelComsumption) * 100);
+        if (travelDistanceKm < distance) {
+            console.log(`${this.data.brand} can travel ${travelDistanceKm} km.`);
+        } else {
+            console.log(`${this.data.brand} can't travel ${travelDistanceKm} km, it has fuel only for ${distance} km.`);
+        }
     }
+
+
 }
 
 module.exports = Car;
+
+
