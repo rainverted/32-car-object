@@ -48,7 +48,16 @@ class Car {
         }
     }
 
-
+    continueTravel(travelDistanceKm) {
+        const distance = Math.round((this.data.tank.currentSize / this.data.fuelComsumption) * 100);
+        //suzinome kiek liko nuvaziuoti, suzinome kokia dalis litrais 100 km atstumui reikalinga ir padauginame is kainos litrui
+        const fuelCostCount = (travelDistanceKm - distance) / 100 * this.data.fuelComsumption * this.data.fuelCostPerLitre;
+        if (travelDistanceKm <= distance) {
+            console.log(`${this.data.brand} can travel ${travelDistanceKm} km, no extra fuel is needed.`);
+        } else {
+            console.log(`${this.data.brand} can't travel ${travelDistanceKm} km, you need ${fuelCostCount.toFixed(2)} Euros for extra fuel.`);
+        }
+    }
 }
 
 module.exports = Car;
